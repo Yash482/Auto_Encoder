@@ -58,3 +58,15 @@ for e in range(epochs):
         print("Epoch : {}/{}...".format(e+1, epochs), "Training loss : {:4f}".format(batch_cost))
 
 
+#visvualize results
+fig, axes = plt.subplots(nrows=2, ncols=10, sharex=True, sharey=True, figsize=(20,4))
+in_imgs = mnist.test.images[:10]
+reconstructed, compressed = sess.run([decoded, encoded], feed_dict={inputs_: in_imgs})
+
+for images, row in zip([in_imgs, reconstructed], axes):
+    for img, ax in zip(images, row):
+        ax.imshow(img.reshape((28, 28)), cmap='Greys_r')
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
+
+fig.tight_layout(pad=0.1)
