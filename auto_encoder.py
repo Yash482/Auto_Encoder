@@ -69,4 +69,5 @@ for images, row in zip([in_imgs, reconstructed], axes):
         ax.get_xaxis().set_visible(False)
         ax.get_yaxis().set_visible(False)
 
+
 fig.tight_layout(pad=0.1)
